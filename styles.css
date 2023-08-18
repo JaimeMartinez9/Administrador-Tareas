@@ -1,12 +1,13 @@
+/* Estilos generales */
 body {
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin: 0;
   padding: 0;
   background-color: teal;
 }
 
+/* Contenedor principal */
 .container {
-  max-width: 500px;
   margin: 20px auto;
   padding: 20px;
   background-color: #ffffff;
@@ -15,45 +16,56 @@ body {
   text-align: center;
 }
 
+/* Estilos para el título principal */
 h1 {
-color: rgb(0, 128, 128);
+  color: rgb(0, 128, 128);
 }
 
+/* Lista de tareas */
 ul {
   list-style: none;
   padding: 0;
 }
 
+/* Elementos individuales de la lista de tareas */
 li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
   padding: 10px 0;
   border-bottom: 1px solid #ddd;
+  font-size: 14px;
 }
 
+/* Estilos para los botones */
 button {
-  background-color:teal;
+  background-color: teal;
   color: #fff;
   border: none;
+  margin-top: 5px;
   padding: 5px 10px;
   border-radius: 3px;
   cursor: pointer;
   transition-duration: 0.4s;
 }
 
+/* Cambio de estilo en el hover (cuando el puntero pasa sobre el botón) */
 button:hover {
-  background-color:darkseagreen;
+  background-color: darkseagreen;
   border: 2px solid rgb(0, 128, 128);
   color: teal;
   box-shadow: 0 3px 5px rgb(0, 128, 128);
 }
 
+/* Estilos para elementos completados */
 .completed {
   text-decoration: line-through;
   opacity: 0.6;
 }
+
+/* Estilos para el campo de entrada de tareas */
 #taskInput {
+  width: 30%;
   padding: 5px 10px;
+  margin-bottom: 10px;
   border: 2px solid rgb(0, 128, 128);
 }
+

@@ -1,29 +1,24 @@
 {
-    "tareas": [
-        {
-            "id":1,
-            "title":"",
-            "descripcion":""
-        },
-        {
-            "id":2,
-            "title":"",
-            "descripcion":""
-        },
-        {
-            "id":3,
-            "title":"",
-            "descripcion":""
-        },
-        {
-            "id":4,
-            "title":"",
-            "descripcion":""
-        },
-        {
-            "id":5,
-            "title":"",
-            "descripcion":""
-        }
-    ]
+  "tareas": [
+    {
+      "title": "Comprar",
+      "descripcion": "Tengo que ir a Mercadona a por todas las cosas quehagan falta para casa",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "title": "picar código",
+      "descripcion": ""
+    },
+    {
+      "id": 5,
+      "title": "Limpiar la casa",
+      "descripcion": ""
+    },
+    {
+      "title": "hola",
+      "descripcion": "",
+      "id": 6
     }
+  ]
+}
