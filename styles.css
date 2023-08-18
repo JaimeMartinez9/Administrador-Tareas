@@ -14,10 +14,11 @@ body {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
+  width: 70%;
 }
 
 /* Estilos para el título principal */
-h1 {
+h1, h4{
   color: rgb(0, 128, 128);
 }
 

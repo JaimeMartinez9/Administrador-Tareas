@@ -1,24 +1,14 @@
 {
   "tareas": [
     {
-      "title": "Comprar",
-      "descripcion": "Tengo que ir a Mercadona a por todas las cosas quehagan falta para casa",
-      "id": 3
+      "id": 1,
+      "title": "Picar código",
+      "descripcion": "Pero tengo que descansar"
     },
     {
-      "id": 4,
-      "title": "picar código",
-      "descripcion": ""
-    },
-    {
-      "id": 5,
+      "id": 2,
       "title": "Limpiar la casa",
-      "descripcion": ""
-    },
-    {
-      "title": "hola",
-      "descripcion": "",
-      "id": 6
+      "descripcion": "Aspirar, Fregar, Colada, etc ... "
     }
   ]
 }

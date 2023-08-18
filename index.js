@@ -17,8 +17,8 @@ addTaskButton.addEventListener("click", async () => {
       },
       body: JSON.stringify({
         title: taskText,
-        descripcion: taskDescripcion,
-      })
+        descripcion: ""
+      }),
     });
 
     if (response.ok) {
@@ -29,7 +29,6 @@ addTaskButton.addEventListener("click", async () => {
 
     // Limpiar el campo de entrada
     taskInput.value = "";
-    taskDescripcionInput.value = "";
   }
 });
 
@@ -38,11 +37,10 @@ function addTask(task) {
   const li = document.createElement("li");
   li.innerHTML = `
     <h1>${task.title}</h1>
-  <span>${task.descripcion}</span>
-  <button class="completeButton">Completada ✅</button>
-  <button class="editButton">📝 Editar</button>
-  <button class="deleteButton" data-taskid="${task.id}">🗑️ Eliminar</button>
-</li>
+    <h4>${task.descripcion}</h4>
+    <button class="completeButton">Completada ✅</button>
+    <button class="editButton">📝 Editar</button>
+    <button class="deleteButton">🗑️ Eliminar</button>
   `;
   taskList.appendChild(li);
 
