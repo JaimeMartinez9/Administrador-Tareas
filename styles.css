@@ -38,6 +38,7 @@ li {
 
 /* Estilos para los botones */
 button {
+  margin: 5px;
   background-color: teal;
   color: #fff;
   border: none;
@@ -64,7 +65,7 @@ button:hover {
 
 /* Estilos para el campo de entrada de tareas */
 #taskInput {
-  margin-right: 80px;
+  margin-right: 95px;
   width: 30%;
   padding: 5px 10px;
   margin-bottom: 10px;

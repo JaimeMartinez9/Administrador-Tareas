@@ -39,39 +39,57 @@ addTaskButton.addEventListener("click", async () => {
 // Función para agregar una tarea a la lista en la interfaz
 function addTask(task) {
   const li = document.createElement("li"); // Crear un nuevo elemento de lista
-  li.innerHTML = `
-    <h2>${task.title}</h2> <!-- Mostrar el título de la tarea -->
-    <h4>${task.descripcion}</h4> <!-- Mostrar la descripción de la tarea -->
-    <button class="completeButton">Completada ✅</button> <!-- Botón de Completada -->
-    <button class="editButton">📝 Editar</button> <!-- Botón de Editar -->
-    <button class="deleteButton" data-taskid="${task.id}">🗑️ Eliminar</button> <!-- Botón de Eliminar -->
-  `;
-  taskList.appendChild(li); // Agregar la tarea a la lista de tareas en la interfaz
 
-  const completeButton = li.querySelector(".completeButton"); // Obtener el botón Completada
-  const deleteButton = li.querySelector(".deleteButton"); // Obtener el botón Eliminar
-  const editButton = li.querySelector(".editButton"); // Obtener el botón Editar
+  // Crear elementos para mostrar la tarea y descripción
+  const taskTitle = document.createElement("h2");
+  const taskDescripcion = document.createElement("h4");
 
-  // Agregar evento al botón "Completada"
+  // Configurar el contenido inicial
+  taskTitle.textContent = task.title;
+  taskDescripcion.textContent = task.descripcion;
+
+  // Crear botones para completar, editar y eliminar
+  const completeButton = document.createElement("button");
+  completeButton.textContent = "Completada ✅";
+  completeButton.className = "completeButton";
+
+  const editButton = document.createElement("button");
+  editButton.textContent = "📝 Editar";
+  editButton.className = "editButton";
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "🗑️ Eliminar";
+  deleteButton.className = "deleteButton";
+  deleteButton.dataset.taskid = task.id;
+
+  // Agregar eventos a los botones
   completeButton.addEventListener("click", () => {
-    li.classList.toggle("completed"); // Alternar la clase "completed" para marcar la tarea como completada
+    li.classList.toggle("completed");
   });
 
-  // Agregar evento al botón "Eliminar"
   deleteButton.addEventListener("click", async () => {
-    taskList.removeChild(li); // Quitar la tarea de la lista en la interfaz
-    // Enviar solicitud DELETE al servidor para eliminar la tarea correspondiente
+    taskList.removeChild(li);
     await fetch(`http://localhost:3000/tareas/${task.id}`, {
       method: "DELETE",
     });
   });
 
-  // Agregar evento al botón "Editar"
-  editButton.addEventListener("click", async () => {
-    // Mostrar una ventana emergente para editar la descripción de la tarea
-    const newDescripcion = prompt("Editar descripción de la tarea:", task.descripcion);
-    if (newDescripcion !== null) {
-      // Enviar solicitud PUT al servidor para actualizar la descripción de la tarea
+  editButton.addEventListener("click", () => {
+    // Crear un área de texto editable para la descripción
+    const descriptionTextarea = document.createElement("textarea");
+    descriptionTextarea.value = task.descripcion;
+
+    // Crear un botón para guardar los cambios
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Guardar";
+    saveButton.addEventListener("click", async () => {
+      // Obtener el valor editado de la descripción
+      const newDescripcion = descriptionTextarea.value.trim();
+
+      // Actualizar la descripción en la interfaz
+      taskDescripcion.textContent = newDescripcion;
+
+      // Enviar una solicitud PUT al servidor para actualizar la descripción
       const response = await fetch(`http://localhost:3000/tareas/${task.id}`, {
         method: "PUT",
         headers: {
@@ -79,16 +97,30 @@ function addTask(task) {
         },
         body: JSON.stringify({
           title: task.title,
-          descripcion: newDescripcion.trim(),
+          descripcion: newDescripcion,
         }),
       });
 
       if (response.ok) {
-        task.descripcion = newDescripcion.trim(); // Actualizar la descripción en el objeto de la tarea
-        li.querySelectorAll("span")[1].textContent = newDescripcion.trim(); // Actualizar la descripción en la interfaz
+        task.descripcion = newDescripcion;
       }
-    }
+    });
+
+    // Reemplazar el contenido actual del elemento de descripción con el área de texto
+    taskDescripcion.innerHTML = "";
+    taskDescripcion.appendChild(descriptionTextarea);
+    taskDescripcion.appendChild(saveButton);
   });
+
+  // Agregar elementos a la lista
+  li.appendChild(taskTitle);
+  li.appendChild(taskDescripcion);
+  li.appendChild(completeButton);
+  li.appendChild(editButton);
+  li.appendChild(deleteButton);
+
+  // Agregar la tarea a la lista de tareas en la interfaz
+  taskList.appendChild(li);
 }
 
 // Función para crear y mostrar las tareas en la interfaz
