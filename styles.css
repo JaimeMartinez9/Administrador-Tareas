@@ -14,7 +14,7 @@ body {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 70%;
+  width: 60%;
 }
 
 /* Estilos para el título principal */
@@ -65,7 +65,6 @@ button:hover {
 
 /* Estilos para el campo de entrada de tareas */
 #taskInput {
-  margin-right: 95px;
   width: 30%;
   padding: 5px 10px;
   margin-bottom: 10px;

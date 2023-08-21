@@ -1,8 +1,16 @@
 // Obtener referencias a elementos del DOM
 const taskInput = document.getElementById("taskInput"); // Obtener el elemento de entrada de tareas
 const taskDescripcionInput = document.getElementById("taskDescripcionInput"); // Obtener el elemento de entrada de descripción
+const startDateInput = document.getElementById("startDateInput"); // Obtener el campo de entrada de fecha de inicio
+const dueDateInput = document.getElementById("dueDateInput"); // Obtener el campo de entrada de fecha de vencimiento
 const addTaskButton = document.getElementById("addTaskButton"); // Obtener el botón de "Apuntar"
 const taskList = document.getElementById("taskList"); // Obtener la lista de tareas
+
+// Botones para ordenar las tareas
+const sortByStartDateButton = document.getElementById("sortByStartDateButton");
+const sortByDueDateButton = document.getElementById("sortByDueDateButton");
+
+let tasks = []; // Array para almacenar las tareas
 
 // Agregar un evento al botón "Apuntar"
 addTaskButton.addEventListener("click", async () => {
@@ -10,6 +18,9 @@ addTaskButton.addEventListener("click", async () => {
   const taskText = taskInput.value.trim();
   // Obtener la descripción de la tarea
   const taskDescripcion = taskDescripcionInput.value.trim();
+  // Obtener las fechas de inicio y vencimiento
+  const startDate = startDateInput.value;
+  const dueDate = dueDateInput.value;
 
   if (taskText !== "") {
     // Enviar la nueva tarea al fake API a través de una solicitud POST
@@ -21,18 +32,23 @@ addTaskButton.addEventListener("click", async () => {
       body: JSON.stringify({
         title: taskText,
         descripcion: taskDescripcion, // Incluir la descripción
+        startDate, // Incluir la fecha de inicio
+        dueDate, // Incluir la fecha de vencimiento
       }),
     });
 
     if (response.ok) {
       // Si la solicitud POST es exitosa, agregar la nueva tarea a la lista en la interfaz
       const newTask = await response.json();
+      tasks.push(newTask);
       addTask(newTask);
     }
 
     // Limpiar los campos de entrada
     taskInput.value = "";
     taskDescripcionInput.value = "";
+    startDateInput.value = "";
+    dueDateInput.value = "";
   }
 });
 
@@ -48,6 +64,13 @@ function addTask(task) {
   const taskDescripcion = document.createElement("h3");
   taskDescripcion.contentEditable = true; // Permitir la edición de la descripción directamente en la interfaz
   taskDescripcion.textContent = task.descripcion;
+
+  // Crear elementos para mostrar las fechas
+  const startDateElement = document.createElement("p");
+  startDateElement.textContent = "Fecha de Inicio: " + task.startDate;
+
+  const dueDateElement = document.createElement("p");
+  dueDateElement.textContent = "Fecha de Vencimiento: " + task.dueDate;
 
   // Crear botones para completar, eliminar y guardar
   const completeButton = document.createElement("button");
@@ -73,6 +96,8 @@ function addTask(task) {
     await fetch(`http://localhost:3000/tareas/${task.id}`, {
       method: "DELETE",
     });
+    // Eliminar la tarea del array de tareas
+    tasks = tasks.filter((t) => t.id !== task.id);
   });
 
   // Agregar evento para guardar cambios
@@ -85,6 +110,8 @@ function addTask(task) {
   // Agregar elementos a la lista
   li.appendChild(taskTitle);
   li.appendChild(taskDescripcion);
+  li.appendChild(startDateElement);
+  li.appendChild(dueDateElement);
   li.appendChild(completeButton);
   li.appendChild(deleteButton);
   li.appendChild(saveButton);
@@ -99,9 +126,9 @@ async function createHtml() {
   
   // Obtener tareas del servidor y agregarlas a la lista
   let response = await fetch("http://localhost:3000/tareas");
-  let data = await response.json();
+  tasks = await response.json();
 
-  data.forEach((task) => {
+  tasks.forEach((task) => {
     addTask(task); // Agregar cada tarea a la interfaz
   });
 }
@@ -121,7 +148,29 @@ async function updateTask(task) {
   }
 }
 
+// Función para ordenar las tareas por fecha de inicio
+function sortByStartDate() {
+  tasks.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+  updateTaskList();
+}
+
+// Función para ordenar las tareas por fecha de vencimiento
+function sortByDueDate() {
+  tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+  updateTaskList();
+}
+
+// Función para actualizar la lista de tareas en la interfaz
+function updateTaskList() {
+  taskList.innerHTML = ""; // Limpiar la lista antes de rellenarla
+  tasks.forEach((task) => {
+    addTask(task); // Agregar cada tarea a la interfaz
+  });
+}
+
 // Esperar a que se cargue el contenido antes de crear la interfaz
 document.addEventListener("DOMContentLoaded", () => {
   createHtml(); // Llamar a la función para crear y mostrar las tareas
+  sortByStartDateButton.addEventListener("click", sortByStartDate);
+  sortByDueDateButton.addEventListener("click", sortByDueDate);
 });
