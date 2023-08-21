@@ -3,7 +3,7 @@ body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin: 0;
   padding: 0;
-  background-color: teal;
+  background-image: linear-gradient(to left, #8a2be2, #1e90ff);
 }
 
 /* Contenedor principal */
@@ -19,7 +19,7 @@ body {
 
 /* Estilos para el título principal */
 h1, h2{
-  color: rgb(0, 128, 128);
+  color: black;
 }
 
 /* Lista de tareas */
@@ -39,7 +39,7 @@ li {
 /* Estilos para los botones */
 button {
   margin: 5px;
-  background-color: teal;
+  background-color: #8a2be2;
   color: #fff;
   border: none;
   margin-top: 5px;
@@ -51,10 +51,10 @@ button {
 
 /* Cambio de estilo en el hover (cuando el puntero pasa sobre el botón) */
 button:hover {
-  background-color: darkseagreen;
-  border: 2px solid rgb(0, 128, 128);
-  color: teal;
-  box-shadow: 0 3px 5px rgb(0, 128, 128);
+  background-image: linear-gradient(to left, #8a2be2, #1e90ff);
+  border: 2px solid #1e90ff;
+  color: fffff;
+  box-shadow: 0 3px 5px #1e90ff;
 }
 
 /* Estilos para elementos completados */
@@ -69,12 +69,12 @@ button:hover {
   width: 30%;
   padding: 5px 10px;
   margin-bottom: 10px;
-  border: 2px solid rgb(0, 128, 128);
+  border: 2px solid #8a2be2;
 }
 
 #taskDescripcionInput {
   width: 30%;
   padding: 5px 10px;
   margin-bottom: 10px;
-  border: 2px solid rgb(0, 128, 128);
+  border: 2px solid #8a2be2;
 }

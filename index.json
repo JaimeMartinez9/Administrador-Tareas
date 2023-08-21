@@ -6,13 +6,13 @@
       "id": 1
     },
     {
-      "id": 2,
       "title": "Limpiar la casa",
-      "descripcion": "Aspirar, Fregar, Colada, etc ... "
+      "descripcion": "Aspirar, Fregar, Colada, etc . .",
+      "id": 2
     },
     {
-      "title": "hola geo",
-      "descripcion": "menuda perilla jajaja",
+      "title": "Hola Geo",
+      "descripcion": "Menuda perilla jajaja",
       "id": 3
     }
   ]

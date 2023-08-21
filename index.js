@@ -42,25 +42,26 @@ function addTask(task) {
 
   // Crear elementos para mostrar la tarea y descripción
   const taskTitle = document.createElement("h2");
-  const taskDescripcion = document.createElement("h4");
-
-  // Configurar el contenido inicial
+  taskTitle.contentEditable = true; // Permitir la edición del título directamente en la interfaz
   taskTitle.textContent = task.title;
+
+  const taskDescripcion = document.createElement("h3");
+  taskDescripcion.contentEditable = true; // Permitir la edición de la descripción directamente en la interfaz
   taskDescripcion.textContent = task.descripcion;
 
-  // Crear botones para completar, editar y eliminar
+  // Crear botones para completar, eliminar y guardar
   const completeButton = document.createElement("button");
   completeButton.textContent = "Completada ✅";
   completeButton.className = "completeButton";
-
-  const editButton = document.createElement("button");
-  editButton.textContent = "📝 Editar";
-  editButton.className = "editButton";
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "🗑️ Eliminar";
   deleteButton.className = "deleteButton";
   deleteButton.dataset.taskid = task.id;
+
+  const saveButton = document.createElement("button");
+  saveButton.textContent = "Guardar 🆗";
+  saveButton.className = "saveButton";
 
   // Agregar eventos a los botones
   completeButton.addEventListener("click", () => {
@@ -74,50 +75,19 @@ function addTask(task) {
     });
   });
 
-  editButton.addEventListener("click", () => {
-    // Crear un área de texto editable para la descripción
-    const descriptionTextarea = document.createElement("textarea");
-    descriptionTextarea.value = task.descripcion;
-
-    // Crear un botón para guardar los cambios
-    const saveButton = document.createElement("button");
-    saveButton.textContent = "Guardar";
-    saveButton.addEventListener("click", async () => {
-      // Obtener el valor editado de la descripción
-      const newDescripcion = descriptionTextarea.value.trim();
-
-      // Actualizar la descripción en la interfaz
-      taskDescripcion.textContent = newDescripcion;
-
-      // Enviar una solicitud PUT al servidor para actualizar la descripción
-      const response = await fetch(`http://localhost:3000/tareas/${task.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: task.title,
-          descripcion: newDescripcion,
-        }),
-      });
-
-      if (response.ok) {
-        task.descripcion = newDescripcion;
-      }
-    });
-
-    // Reemplazar el contenido actual del elemento de descripción con el área de texto
-    taskDescripcion.innerHTML = "";
-    taskDescripcion.appendChild(descriptionTextarea);
-    taskDescripcion.appendChild(saveButton);
+  // Agregar evento para guardar cambios
+  saveButton.addEventListener("click", async () => {
+    task.title = taskTitle.textContent; // Actualizar el título en el objeto de la tarea
+    task.descripcion = taskDescripcion.textContent; // Actualizar la descripción en el objeto de la tarea
+    updateTask(task);
   });
 
   // Agregar elementos a la lista
   li.appendChild(taskTitle);
   li.appendChild(taskDescripcion);
   li.appendChild(completeButton);
-  li.appendChild(editButton);
   li.appendChild(deleteButton);
+  li.appendChild(saveButton);
 
   // Agregar la tarea a la lista de tareas en la interfaz
   taskList.appendChild(li);
@@ -134,6 +104,21 @@ async function createHtml() {
   data.forEach((task) => {
     addTask(task); // Agregar cada tarea a la interfaz
   });
+}
+
+// Función para enviar una solicitud PUT al servidor para actualizar una tarea
+async function updateTask(task) {
+  const response = await fetch(`http://localhost:3000/tareas/${task.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(task),
+  });
+
+  if (!response.ok) {
+    console.error("Error al actualizar la tarea en el servidor.");
+  }
 }
 
 // Esperar a que se cargue el contenido antes de crear la interfaz
