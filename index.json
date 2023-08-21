@@ -1,19 +1,14 @@
 {
   "tareas": [
     {
-      "id": 1,
       "title": "Picar código",
-      "descripcion": "Pero tengo que descansar"
+      "descripcion": "Pero tengo que descansar un poco",
+      "id": 1
     },
     {
       "id": 2,
       "title": "Limpiar la casa",
       "descripcion": "Aspirar, Fregar, Colada, etc ... "
-    },
-    {
-      "title": "hola marico",
-      "descripcion": "geo marico",
-      "id": 3
     }
   ]
 }

@@ -68,24 +68,24 @@ function addTask(task) {
 
   // Agregar evento al botón "Editar"
   editButton.addEventListener("click", async () => {
-    // Mostrar una ventana emergente para editar el título de la tarea
-    const newText = prompt("Editar tarea:", task.title);
-    if (newText !== null) {
-      // Enviar solicitud PUT al servidor para actualizar el título de la tarea
+    // Mostrar una ventana emergente para editar la descripción de la tarea
+    const newDescripcion = prompt("Editar descripción de la tarea:", task.descripcion);
+    if (newDescripcion !== null) {
+      // Enviar solicitud PUT al servidor para actualizar la descripción de la tarea
       const response = await fetch(`http://localhost:3000/tareas/${task.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          title: newText.trim(),
-          descripcion: task.descripcion,
+          title: task.title,
+          descripcion: newDescripcion.trim(),
         }),
       });
 
       if (response.ok) {
-        task.title = newText.trim(); // Actualizar el título en el objeto de la tarea
-        li.querySelector("span").textContent = newText.trim(); // Actualizar el título en la interfaz
+        task.descripcion = newDescripcion.trim(); // Actualizar la descripción en el objeto de la tarea
+        li.querySelectorAll("span")[1].textContent = newDescripcion.trim(); // Actualizar la descripción en la interfaz
       }
     }
   });
