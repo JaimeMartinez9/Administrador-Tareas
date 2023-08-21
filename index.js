@@ -40,8 +40,8 @@ addTaskButton.addEventListener("click", async () => {
 function addTask(task) {
   const li = document.createElement("li"); // Crear un nuevo elemento de lista
   li.innerHTML = `
-    <h1>${task.title}</h1> <!-- Mostrar el título de la tarea -->
-    <h3>${task.descripcion}</h3> <!-- Mostrar la descripción de la tarea -->
+    <h2>${task.title}</h2> <!-- Mostrar el título de la tarea -->
+    <h4>${task.descripcion}</h4> <!-- Mostrar la descripción de la tarea -->
     <button class="completeButton">Completada ✅</button> <!-- Botón de Completada -->
     <button class="editButton">📝 Editar</button> <!-- Botón de Editar -->
     <button class="deleteButton" data-taskid="${task.id}">🗑️ Eliminar</button> <!-- Botón de Eliminar -->
