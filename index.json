@@ -1,18 +1,36 @@
 {
   "tareas": [
     {
-      "title": "Pintar",
-      "descripcion": "Pintar la cocina de blanco",
-      "startDate": "2023-08-21",
-      "dueDate": "2023-08-23",
-      "id": 2
+      "title": "Montar en bici",
+      "descripcion": "hacer descenso en la pinilla",
+      "startDate": "2023-08-23",
+      "dueDate": "2023-08-24",
+      "completed": false,
+      "id": 4
     },
     {
-      "title": "LEROY MERLIN",
-      "descripcion": "-COMPRAR LISTONES MADERA, IMPRIMACIÓN",
-      "startDate": "",
-      "dueDate": "",
-      "id": 3
+      "title": "Pintar la cocina",
+      "descripcion": "comprar pintura blanca",
+      "startDate": "2023-08-25",
+      "dueDate": "2023-08-26",
+      "completed": false,
+      "id": 5
+    },
+    {
+      "title": "Código",
+      "descripcion": "darle caña al proyecto",
+      "startDate": "2023-08-18",
+      "dueDate": "2023-08-19",
+      "completed": false,
+      "id": 6
+    },
+    {
+      "title": "Coche",
+      "descripcion": "Lavar el coche y aspirarlo",
+      "startDate": "2023-08-01",
+      "dueDate": "2023-08-03",
+      "completed": false,
+      "id": 7
     }
   ]
 }

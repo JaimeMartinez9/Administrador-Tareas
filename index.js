@@ -33,7 +33,8 @@ addTaskButton.addEventListener("click", async () => {
         title: taskText,
         descripcion: taskDescripcion, // Incluir la descripción
         startDate, // Incluir la fecha de inicio
-        dueDate, // Incluir la fecha de vencimiento
+        dueDate,
+        completed: false // Incluir la fecha de vencimiento
       }),
     });
 
@@ -87,8 +88,13 @@ function addTask(task) {
   saveButton.className = "saveButton";
 
   // Agregar eventos a los botones
-  completeButton.addEventListener("click", () => {
+  completeButton.addEventListener("click", async () => {
+    // Marcar la tarea como completada en la interfaz
     li.classList.toggle("completed");
+
+    // Actualizar el estado de completado en el servidor a través de una solicitud PUT al Fake API
+    task.completed = !task.completed;
+    await updateTask(task);
   });
 
   deleteButton.addEventListener("click", async () => {
@@ -104,8 +110,13 @@ function addTask(task) {
   saveButton.addEventListener("click", async () => {
     task.title = taskTitle.textContent; // Actualizar el título en el objeto de la tarea
     task.descripcion = taskDescripcion.textContent; // Actualizar la descripción en el objeto de la tarea
-    updateTask(task);
+    await updateTask(task);
   });
+
+  // Si la tarea está completada, marcarla como completada en la interfaz
+  if (task.completed) {
+    li.classList.add("completed");
+  }
 
   // Agregar elementos a la lista
   li.appendChild(taskTitle);
@@ -123,7 +134,7 @@ function addTask(task) {
 // Función para crear y mostrar las tareas en la interfaz
 async function createHtml() {
   taskList.innerHTML = ""; // Limpiar la lista antes de rellenarla
-  
+
   // Obtener tareas del servidor y agregarlas a la lista
   let response = await fetch("http://localhost:3000/tareas");
   tasks = await response.json();
