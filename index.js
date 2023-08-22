@@ -66,10 +66,10 @@ function addTask(task) {
   taskDescripcion.textContent = task.descripcion;
 
   // Crear elementos para mostrar las fechas
-  const startDateElement = document.createElement("p");
+  const startDateElement = document.createElement("h4");
   startDateElement.textContent = "Fecha de Inicio: " + task.startDate;
 
-  const dueDateElement = document.createElement("p");
+  const dueDateElement = document.createElement("h4");
   dueDateElement.textContent = "Fecha de Vencimiento: " + task.dueDate;
 
   // Crear botones para completar, eliminar y guardar
@@ -78,7 +78,7 @@ function addTask(task) {
   completeButton.className = "completeButton";
 
   const deleteButton = document.createElement("button");
-  deleteButton.textContent = "🗑️ Eliminar";
+  deleteButton.textContent = "❌ Eliminar";
   deleteButton.className = "deleteButton";
   deleteButton.dataset.taskid = task.id;
 
