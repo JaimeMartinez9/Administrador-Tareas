@@ -2,19 +2,11 @@
   "tareas": [
     {
       "title": "Montar en bici",
-      "descripcion": "hacer descenso en la pinilla",
+      "descripcion": "hacer descenso",
       "startDate": "2023-08-23",
       "dueDate": "2023-08-24",
       "completed": false,
       "id": 4
-    },
-    {
-      "title": "Pintar la cocina",
-      "descripcion": "comprar pintura blanca",
-      "startDate": "2023-08-25",
-      "dueDate": "2023-08-26",
-      "completed": false,
-      "id": 5
     },
     {
       "title": "Código",
