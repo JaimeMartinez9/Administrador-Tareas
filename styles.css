@@ -54,7 +54,7 @@ button:hover {
   background-image: linear-gradient(to left, #8a2be2, #1e90ff);
   border: 2px solid #1e90ff;
   color: fffff;
-  box-shadow: 0 3px 5px #000000;
+  box-shadow: 0 3px 5px #1e90ff;
 }
 
 
