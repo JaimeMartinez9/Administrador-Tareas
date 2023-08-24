@@ -21,7 +21,7 @@
       "descripcion": "Lavar el coche y aspirarlo",
       "startDate": "2023-08-01",
       "dueDate": "2023-08-03",
-      "completed": true,
+      "completed": false,
       "id": 7
     }
   ]
