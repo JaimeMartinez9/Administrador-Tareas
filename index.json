@@ -1,0 +1,28 @@
+{
+  "tareas": [
+    {
+      "title": "Montar en bici",
+      "descripcion": "hacer descenso en la pinilla",
+      "startDate": "2023-08-23",
+      "dueDate": "2023-08-24",
+      "completed": false,
+      "id": 4
+    },
+    {
+      "title": "Código",
+      "descripcion": "darle caña al proyecto",
+      "startDate": "2023-08-18",
+      "dueDate": "2023-08-19",
+      "completed": false,
+      "id": 6
+    },
+    {
+      "title": "Coche",
+      "descripcion": "Lavar el coche y aspirarlo",
+      "startDate": "2023-08-01",
+      "dueDate": "2023-08-03",
+      "completed": false,
+      "id": 7
+    }
+  ]
+}

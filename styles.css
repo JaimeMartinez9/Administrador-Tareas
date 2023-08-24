@@ -1,0 +1,93 @@
+
+body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(to left, #8a2be2, #1e90ff);
+}
+
+
+.container {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 60%;
+}
+
+
+h1, h2{
+  color: black;
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+
+li {
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+
+button {
+  margin: 5px;
+  background-color: #8a2be2;
+  color: #fff;
+  border: none;
+  margin-top: 5px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+
+button:hover {
+  background-image: linear-gradient(to left, #8a2be2, #1e90ff);
+  border: 2px solid #1e90ff;
+  color: fffff;
+  box-shadow: 0 3px 5px #1e90ff;
+}
+
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+
+#taskInput {
+  width: 30%;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 2px solid #8a2be2;
+}
+
+#taskDescripcionInput {
+  width: 30%;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 2px solid #8a2be2;
+}
+
+#startDateInput {
+  width: 30%;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 2px solid #8a2be2;
+}
+
+#dueDateInput {
+  width: 30%;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 2px solid #8a2be2;
+}
