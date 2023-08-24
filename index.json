@@ -2,7 +2,7 @@
   "tareas": [
     {
       "title": "Montar en bici",
-      "descripcion": "hacer descenso",
+      "descripcion": "hacer descenso en la pinilla",
       "startDate": "2023-08-23",
       "dueDate": "2023-08-24",
       "completed": false,
@@ -21,7 +21,7 @@
       "descripcion": "Lavar el coche y aspirarlo",
       "startDate": "2023-08-01",
       "dueDate": "2023-08-03",
-      "completed": false,
+      "completed": true,
       "id": 7
     }
   ]

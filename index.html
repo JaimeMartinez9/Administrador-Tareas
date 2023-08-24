@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <title>Todo por hacer!</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>¡Todo por hacer!</h1>
-          <input type="text" id="taskInput" placeholder="Todo por hacer ! ! !" /><br>
-          <input type="text" id="taskDescripcionInput" placeholder="Descripción de la tarea..." /><br>
-          <label for="startDateInput">Fecha de Inicio:</label><br>
-          <input type="date" id="startDateInput"><br>
-          <label for="dueDateInput">Fecha de Vencimiento:</label><br>
-          <input type="date" id="dueDateInput"><br>
-          <button id="sortByStartDateButton">Ordenar por Fecha de Inicio</button>
-          <button id="sortByDueDateButton">Ordenar por Fecha de Vencimiento</button><br>
-          <button id="addTaskButton">📌Apuntar</button>
-          <ul id="taskList"></ul>
+      <h1>¡Todo por hacer!</h1>
+      <input
+        type="text"
+        id="taskInput"
+        placeholder="Todo por hacer ! ! !"
+      /><br />
+      <input
+        type="text"
+        id="taskDescripcionInput"
+        placeholder="Descripción de la tarea..."
+      /><br />
+      <label for="startDateInput">Fecha de Inicio:</label><br />
+      <input type="date" id="startDateInput" /><br />
+      <label for="dueDateInput">Fecha de Vencimiento:</label><br />
+      <input type="date" id="dueDateInput" /><br />
+      <button id="sortByStartDateButton">Ordenar por Fecha de Inicio</button>
+      <button id="sortByDueDateButton">Ordenar por Fecha de Vencimiento</button
+      ><br />
+      <button id="addTaskButton">📌Apuntar</button>
+      <ul id="taskList"></ul>
     </div>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
-
